@@ -26,4 +26,4 @@ def PrepareLibrariesAndDatasets():
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet64_CropLand.pt https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EQodTpsz3_BMrgbaIlkeg8UBZ-i3S-ltAdLn__ZfgF49-g?download=1")
   for i in glob.glob(f'{DatasetPath}/*.zip'): shutil.unpack_archive(i, DatasetPath)
   clear_output()
-  print('Prepration done.')
+  print('Preparation was completed.')
