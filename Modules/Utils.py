@@ -15,11 +15,14 @@ def PrepareLibrariesAndDatasets():
   DatasetPath = '/content/Datasets'
   ModelPath   = '/content/Models'
   os.makedirs(DatasetPath, exist_ok=True)
+  print('Downloading and Extracting Datasets...', end=' ')
   os.system("aria2c -x 8 -d /content/Datasets -o LEVIR-CD-256.zip    https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/ERDI-5yFHahDl-1a390i2DgBJULY_BNh6vctHm4swinNZg?download=1")
   os.system("aria2c -x 8 -d /content/Datasets -o DSIFN-CD-256.zip    https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EeMlQQld78pGgCq3puurff0B8yrzo0qkN1-q0DfdpLDCFw?download=1")
   os.system("aria2c -x 8 -d /content/Datasets -o WHU-CD-256.zip      https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/Ebh6rPs8y1xAi4In2D8Crc4BvRIy7_kSUj7EvNRfPcAKyQ?download=1")
   os.system("aria2c -x 8 -d /content/Datasets -o CropLand-CD-256.zip https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EVUpqzbgHF9Clr8pdNdaorQBWJQnDaojrHkcNDTBmRIojw?download=1")
-
+  for i in glob.glob(f'{DatasetPath}/*.zip'): shutil.unpack_archive(i, DatasetPath)
+  print('Done.')
+  print('Downloading OctaveNet Pretrained Weights...', end=' ')
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet8_WHU.pt  https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EYZL5xnBYutBvbmw5LITkF8BPcjFWxvPpz7f6XdG2ER-zg?download=1")
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet32_WHU.pt https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EQ55tvZXi49DmOlEIwezxVcB9LoMQSevNIQvbaMs3z4DYg?download=1")
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet64_WHU.pt https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/Ec0Ait83aZtFvMKdHJ1LTqIBViukYf5L5ppqrAgTfgz1zQ?download=1")
@@ -32,7 +35,7 @@ def PrepareLibrariesAndDatasets():
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet8_CropLand.pt  https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/Eeq1M8pXkWpOlF1c6DCK5vEByzA1E8gNFH6SRzSyrW-Zrw?download=1")
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet32_CropLand.pt https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EbT77UrkJI1JsDOV9aKfLckBkiRXJ8SxXySYCKgTwpbPgg?download=1")
   os.system("aria2c -x 8 -d /content/Models -o OctaveNet64_CropLand.pt https://emailkntuacir-my.sharepoint.com/:u:/g/personal/farhadinima75_email_kntu_ac_ir/EQodTpsz3_BMrgbaIlkeg8UBZ-i3S-ltAdLn__ZfgF49-g?download=1")
-  for i in glob.glob(f'{DatasetPath}/*.zip'): shutil.unpack_archive(i, DatasetPath)
+  print('Done.')
   clear_output()
   print('Preparation was completed.')
 
